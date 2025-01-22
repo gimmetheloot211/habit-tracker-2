@@ -1,9 +1,9 @@
 package com.habit.habit_tracker.dto.auth;
 
 public class AuthResponse {
-    private String token;
-    private String username;
-    private String message;
+    private final String token;
+    private final String username;
+    private final String message;
 
     public AuthResponse(String token, String username, String message) {
         this.token = token;
@@ -15,23 +15,11 @@ public class AuthResponse {
         return token;
     }
 
-    public void setToken(String token) {
-        this.token = token;
-    }
-
     public String getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public String getMessage() {
         return this.message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
     }
 }

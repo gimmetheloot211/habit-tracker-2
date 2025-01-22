@@ -1,7 +1,14 @@
 package com.habit.habit_tracker.dto.auth;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 public class LoginRequest {
+    @NotBlank(message = "Username is required")
+    @Size(max = 20)
     private String username;
+    @NotBlank(message = "Password is required")
+    @Size(max = 20)
     private String password;
 
     public LoginRequest() {
