@@ -9,7 +9,6 @@ import com.habit.habit_tracker.domain.User;
 import com.habit.habit_tracker.dto.user.UserUpdateRequest;
 import com.habit.habit_tracker.exception.ApiRequestException;
 import com.habit.habit_tracker.repository.UserRepository;
-import com.habit.habit_tracker.security.JwtProvider;
 import com.habit.habit_tracker.security.UserPrincipal;
 
 import static com.habit.habit_tracker.constants.ErrorMessage.*;
@@ -19,12 +18,10 @@ import java.util.Optional;
 @Service
 public class UserService {
     private final UserRepository userRepository;
-    private final JwtProvider jwtProvider;
     private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository, JwtProvider jwtProvider, PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
-        this.jwtProvider = jwtProvider;
         this.passwordEncoder = passwordEncoder;
     }
 
