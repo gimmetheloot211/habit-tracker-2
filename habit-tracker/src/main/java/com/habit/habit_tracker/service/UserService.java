@@ -1,7 +1,6 @@
 package com.habit.habit_tracker.service;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +8,7 @@ import com.habit.habit_tracker.domain.User;
 import com.habit.habit_tracker.dto.user.UserUpdateRequest;
 import com.habit.habit_tracker.exception.ApiRequestException;
 import com.habit.habit_tracker.repository.UserRepository;
-import com.habit.habit_tracker.security.UserPrincipal;
+import com.habit.habit_tracker.security.AuthUtil;
 
 import static com.habit.habit_tracker.constants.ErrorMessage.*;
 
@@ -19,32 +18,20 @@ import java.util.Optional;
 public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final AuthUtil authUtil;
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthUtil authUtil) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.authUtil = authUtil;
     }
 
     public User getUserDetails() {
-        if (SecurityContextHolder.getContext().getAuthentication() == null ||
-                !(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserPrincipal)) {
-            throw new ApiRequestException(USER_NOT_FOUND, HttpStatus.UNAUTHORIZED);
-        }
-        UserPrincipal userPrincipal = (UserPrincipal) SecurityContextHolder.getContext().getAuthentication()
-                .getPrincipal();
-
-        return userPrincipal.getUser();
+        return authUtil.getAuthenticatedUser();
     }
 
     public User updateUserDetails(UserUpdateRequest userUpdateRequest) {
-        if (SecurityContextHolder.getContext().getAuthentication() == null ||
-                !(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserPrincipal)) {
-            throw new ApiRequestException(USER_NOT_FOUND, HttpStatus.UNAUTHORIZED);
-        }
-        UserPrincipal userPrincipal = (UserPrincipal) SecurityContextHolder.getContext().getAuthentication()
-                .getPrincipal();
-
-        User user = userPrincipal.getUser();
+        User user = authUtil.getAuthenticatedUser();
 
         if (userUpdateRequest.getUsername() != null) {
             Optional<User> existingUser = userRepository.findByUsername(userUpdateRequest.getUsername());
