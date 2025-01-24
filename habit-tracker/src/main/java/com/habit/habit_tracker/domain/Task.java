@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import com.habit.habit_tracker.enums.TaskDifficulty;
 import com.habit.habit_tracker.enums.TaskStatus;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -30,16 +31,16 @@ public class Task {
     @Column(name = "id")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private User user;
 
     @Column(name = "name", nullable = false)
-    @Size(max = 100)
+    @Size(max = 50)
     private String name;
 
     @Column(name = "description")
-    @Size(max = 500)
+    @Size(max = 200)
     private String description;
 
     @Enumerated(EnumType.STRING)
@@ -50,7 +51,10 @@ public class Task {
     @Column(name = "difficulty")
     private TaskDifficulty difficulty;
 
-    @Column(name = "date", updatable = false, nullable = false)
+    @Column(name = "due_date", nullable = false)
+    private LocalDateTime dueDate;
+
+    @Column(name = "created_at", updatable = false, nullable = false)
     private LocalDateTime createdAt;
 
     public Task() {
@@ -64,6 +68,7 @@ public class Task {
             String description,
             TaskStatus status,
             TaskDifficulty difficulty,
+            LocalDateTime dueDate,
             LocalDateTime createdAt) {
         this.id = id;
         this.user = user;
@@ -71,6 +76,7 @@ public class Task {
         this.description = description;
         this.status = status;
         this.difficulty = difficulty;
+        this.dueDate = dueDate;
         this.createdAt = createdAt;
     }
 
@@ -80,12 +86,14 @@ public class Task {
             String description,
             TaskStatus status,
             TaskDifficulty difficulty,
+            LocalDateTime dueDate,
             LocalDateTime createdAt) {
         this.user = user;
         this.name = name;
         this.description = description;
         this.status = status;
         this.difficulty = difficulty;
+        this.dueDate = dueDate;
         this.createdAt = createdAt;
     }
 
@@ -137,6 +145,14 @@ public class Task {
         this.difficulty = difficulty;
     }
 
+    public LocalDateTime getDueDate() {
+        return this.dueDate;
+    }
+
+    public void setDueDate(LocalDateTime dueDate) {
+        this.dueDate = dueDate;
+    }
+
     public LocalDateTime getCreatedAt() {
         return this.createdAt;
     }
@@ -157,6 +173,7 @@ public class Task {
                 ", description='" + description + '\'' +
                 ", status='" + status + '\'' +
                 ", difficulty='" + difficulty + '\'' +
+                ", dueDate='" + dueDate + '\'' +
                 ", createdAt='" + createdAt + '\'';
     }
 }

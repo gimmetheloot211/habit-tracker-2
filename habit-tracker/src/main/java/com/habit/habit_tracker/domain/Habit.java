@@ -42,7 +42,7 @@ public class Habit {
     @Min(0)
     private Integer minutesTotal = 0;
 
-    @Column(name = "date", updatable = false, nullable = false)
+    @Column(name = "created_at", updatable = false, nullable = false)
     private LocalDateTime createdAt;
 
     public Habit() {
