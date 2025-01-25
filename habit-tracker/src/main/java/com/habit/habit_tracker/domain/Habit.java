@@ -31,11 +31,11 @@ public class Habit {
     private User user;
 
     @Column(name = "name", nullable = false)
-    @Size(max = 100)
+    @Size(max = 50)
     private String name;
 
     @Column(name = "description")
-    @Size(max = 500)
+    @Size(max = 200)
     private String description;
 
     @Column(name = "minutes_total")

@@ -25,72 +25,72 @@ import jakarta.validation.Valid;
 @RequestMapping(path = "api/v1/tasks")
 public class TaskController {
 
-    private final TaskService taskService;
+        private final TaskService taskService;
 
-    public TaskController(TaskService taskService) {
-        this.taskService = taskService;
-    }
+        public TaskController(TaskService taskService) {
+                this.taskService = taskService;
+        }
 
-    @PostMapping
-    public ResponseEntity<TaskResponse> createTask(@Valid @RequestBody TaskCreateRequest taskCreateRequest) {
-        Task createdTask = taskService.createTask(taskCreateRequest);
-        TaskResponse taskResponse = new TaskResponse(
-                createdTask.getId(),
-                createdTask.getUser().getId(),
-                createdTask.getName(),
-                createdTask.getDescription(),
-                createdTask.getStatus(),
-                createdTask.getDifficulty(),
-                createdTask.getDueDate(),
-                createdTask.getCreatedAt());
+        @PostMapping
+        public ResponseEntity<TaskResponse> createTask(@Valid @RequestBody TaskCreateRequest taskCreateRequest) {
+                Task createdTask = taskService.createTask(taskCreateRequest);
+                TaskResponse taskResponse = new TaskResponse(
+                                createdTask.getId(),
+                                createdTask.getUser().getId(),
+                                createdTask.getName(),
+                                createdTask.getDescription(),
+                                createdTask.getStatus(),
+                                createdTask.getDifficulty(),
+                                createdTask.getDueDate(),
+                                createdTask.getCreatedAt());
 
-        return ResponseEntity
-                .created(URI.create("/api/v1/tasks/" + createdTask.getId()))
-                .body(taskResponse);
-    }
+                return ResponseEntity
+                                .created(URI.create("/api/v1/tasks/" + createdTask.getId()))
+                                .body(taskResponse);
+        }
 
-    @PatchMapping(path = "/{id}")
-    public ResponseEntity<TaskResponse> updateTask(@PathVariable Long id,
-            @Valid @RequestBody TaskUpdateRequest taskUpdateRequest) {
-        Task updatedTask = taskService.updateTask(id, taskUpdateRequest);
-        TaskResponse taskResponse = new TaskResponse(
-                updatedTask.getId(),
-                updatedTask.getUser().getId(),
-                updatedTask.getName(),
-                updatedTask.getDescription(),
-                updatedTask.getStatus(),
-                updatedTask.getDifficulty(),
-                updatedTask.getDueDate(),
-                updatedTask.getCreatedAt());
-        return ResponseEntity.ok(taskResponse);
-    }
+        @PatchMapping(path = "/{id}")
+        public ResponseEntity<TaskResponse> updateTask(@PathVariable Long id,
+                        @Valid @RequestBody TaskUpdateRequest taskUpdateRequest) {
+                Task updatedTask = taskService.updateTask(id, taskUpdateRequest);
+                TaskResponse taskResponse = new TaskResponse(
+                                updatedTask.getId(),
+                                updatedTask.getUser().getId(),
+                                updatedTask.getName(),
+                                updatedTask.getDescription(),
+                                updatedTask.getStatus(),
+                                updatedTask.getDifficulty(),
+                                updatedTask.getDueDate(),
+                                updatedTask.getCreatedAt());
+                return ResponseEntity.ok(taskResponse);
+        }
 
-    @GetMapping(path = "/{id}")
-    public ResponseEntity<TaskResponse> getTask(@PathVariable Long id) {
-        Task task = taskService.getTask(id);
-        TaskResponse taskResponse = new TaskResponse(
-                task.getId(),
-                task.getUser().getId(),
-                task.getName(),
-                task.getDescription(),
-                task.getStatus(),
-                task.getDifficulty(),
-                task.getDueDate(),
-                task.getCreatedAt());
-        return ResponseEntity.ok(taskResponse);
-    }
+        @GetMapping(path = "/{id}")
+        public ResponseEntity<TaskResponse> getTask(@PathVariable Long id) {
+                Task task = taskService.getTask(id);
+                TaskResponse taskResponse = new TaskResponse(
+                                task.getId(),
+                                task.getUser().getId(),
+                                task.getName(),
+                                task.getDescription(),
+                                task.getStatus(),
+                                task.getDifficulty(),
+                                task.getDueDate(),
+                                task.getCreatedAt());
+                return ResponseEntity.ok(taskResponse);
+        }
 
-    @GetMapping
-    public ResponseEntity<List<TaskSummaryResponse>> getAllTasks() {
-        List<Task> tasks = taskService.getAllTasks();
-        List<TaskSummaryResponse> tasksResponse = tasks.stream()
-                .map(task -> new TaskSummaryResponse(
-                        task.getId(),
-                        task.getName(),
-                        task.getStatus(),
-                        task.getDifficulty(),
-                        task.getDueDate()))
-                .toList();
-        return ResponseEntity.ok(tasksResponse);
-    }
+        @GetMapping
+        public ResponseEntity<List<TaskSummaryResponse>> getAllTasks() {
+                List<Task> tasks = taskService.getAllTasks();
+                List<TaskSummaryResponse> tasksResponse = tasks.stream()
+                                .map(task -> new TaskSummaryResponse(
+                                                task.getId(),
+                                                task.getName(),
+                                                task.getStatus(),
+                                                task.getDifficulty(),
+                                                task.getDueDate()))
+                                .toList();
+                return ResponseEntity.ok(tasksResponse);
+        }
 }
