@@ -12,12 +12,13 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name = "daily_habit_logs")
+@Table(name = "daily_habit_logs", uniqueConstraints = @UniqueConstraint(columnNames = { "habit_id", "date" }))
 public class DailyHabitLog {
 
     @Id
@@ -36,7 +37,7 @@ public class DailyHabitLog {
     private Integer minutesDone = 0;
 
     @Column(name = "notes")
-    @Size(max = 500)
+    @Size(max = 200)
     private String notes;
 
     @Column(name = "date", nullable = false)

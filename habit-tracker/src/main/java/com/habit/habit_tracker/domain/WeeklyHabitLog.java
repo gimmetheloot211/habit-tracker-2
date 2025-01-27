@@ -43,13 +43,13 @@ public class WeeklyHabitLog {
     @Column(name = "minutes_done")
     @Min(0)
     @Max(10080)
-    private Integer minutesDone;
+    private Integer minutesDone = 0;
 
     @Column(name = "weekly_imbalance")
     private Integer weeklyImbalance;
 
     @Column(name = "notes")
-    @Size(max = 500)
+    @Size(max = 200)
     private String notes;
 
     @Column(name = "start_date", nullable = false)
