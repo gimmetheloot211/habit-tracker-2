@@ -1,5 +1,10 @@
 package com.habit.habit_tracker.service;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.temporal.WeekFields;
+import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
@@ -44,10 +49,6 @@ public class DailyHabitLogService {
         Habit habit = habitRepository.findByIdAndUserId(request.getHabitId(), user.getId())
                 .orElseThrow(() -> new ApiRequestException(HABIT_NOT_FOUND, HttpStatus.NOT_FOUND));
 
-        if (!habit.getUser().getId().equals(user.getId())) {
-            throw new ApiRequestException(UNAUTHORIZED, HttpStatus.FORBIDDEN);
-        }
-
         Optional<DailyHabitLog> dhlOptional = dailyHabitLogRepository.findByHabitAndDate(request.getHabitId(),
                 request.getDate());
 
@@ -78,6 +79,32 @@ public class DailyHabitLogService {
         }
 
         return dailyHabitLogRepository.save(dhl);
+    }
+
+    public DailyHabitLog getDailyHabitLog(Long habitId, LocalDate date) {
+        User user = authUtil.getAuthenticatedUser();
+        habitRepository.findByIdAndUserId(habitId, user.getId())
+                .orElseThrow(() -> new ApiRequestException(HABIT_NOT_FOUND, HttpStatus.NOT_FOUND));
+
+        DailyHabitLog dhl = dailyHabitLogRepository.findByHabitAndDate(habitId, date)
+                .orElseThrow(() -> new ApiRequestException(DHL_NOT_FOUND, HttpStatus.NOT_FOUND));
+
+        return dhl;
+    }
+
+    public List<DailyHabitLog> getDailyHabitLogsForWeek(Long habitId, Integer year, Integer weekNumber) {
+        User user = authUtil.getAuthenticatedUser();
+        habitRepository.findByIdAndUserId(habitId, user.getId())
+                .orElseThrow(() -> new ApiRequestException(HABIT_NOT_FOUND, HttpStatus.NOT_FOUND));
+
+        WeekFields weekFields = WeekFields.of(Locale.getDefault());
+        LocalDate startOfWeek = LocalDate.of(year, 1, 1)
+                .with(weekFields.weekOfYear(), weekNumber)
+                .with(DayOfWeek.MONDAY);
+
+        LocalDate endOfWeek = startOfWeek.plusDays(6);
+
+        return dailyHabitLogRepository.findDailyHabitLogsForWeek(habitId, startOfWeek, endOfWeek);
     }
 
 }
