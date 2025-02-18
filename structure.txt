@@ -1,0 +1,397 @@
+📦habit-tracker
+ ┣ 📂.gradle
+ ┃ ┣ 📂8.12.1
+ ┃ ┃ ┣ 📂checksums
+ ┃ ┃ ┃ ┣ 📜checksums.lock
+ ┃ ┃ ┃ ┣ 📜md5-checksums.bin
+ ┃ ┃ ┃ ┗ 📜sha1-checksums.bin
+ ┃ ┃ ┣ 📂executionHistory
+ ┃ ┃ ┃ ┣ 📜executionHistory.bin
+ ┃ ┃ ┃ ┗ 📜executionHistory.lock
+ ┃ ┃ ┣ 📂expanded
+ ┃ ┃ ┣ 📂fileChanges
+ ┃ ┃ ┃ ┗ 📜last-build.bin
+ ┃ ┃ ┣ 📂fileHashes
+ ┃ ┃ ┃ ┣ 📜fileHashes.bin
+ ┃ ┃ ┃ ┣ 📜fileHashes.lock
+ ┃ ┃ ┃ ┗ 📜resourceHashesCache.bin
+ ┃ ┃ ┣ 📂vcsMetadata
+ ┃ ┃ ┗ 📜gc.properties
+ ┃ ┣ 📂buildOutputCleanup
+ ┃ ┃ ┣ 📜buildOutputCleanup.lock
+ ┃ ┃ ┣ 📜cache.properties
+ ┃ ┃ ┗ 📜outputFiles.bin
+ ┃ ┣ 📂kotlin
+ ┃ ┃ ┣ 📂errors
+ ┃ ┃ ┗ 📂sessions
+ ┃ ┣ 📂vcs-1
+ ┃ ┃ ┗ 📜gc.properties
+ ┃ ┗ 📜file-system.probe
+ ┣ 📂.vscode
+ ┃ ┗ 📜NEWLY_CREATED_BY_SPRING_INITIALIZR
+ ┣ 📂build
+ ┃ ┣ 📂classes
+ ┃ ┃ ┗ 📂kotlin
+ ┃ ┃ ┃ ┗ 📂main
+ ┃ ┃ ┃ ┃ ┣ 📂com
+ ┃ ┃ ┃ ┃ ┃ ┗ 📂habit
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂habit_tracker
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂constants
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ErrorMessage.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂domain
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DailyHabitLog.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜Habit.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜Task.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜User.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜WeeklyHabitLog.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂auth
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AuthResponse.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜LoginRequest.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜RegisterRequest.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂habit
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜HabitCreateRequest.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜HabitResponse.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜HabitUpdateRequest.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂logs
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂daily
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DailyHabitLogRequest.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜DailyHabitLogResponse.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂weekly
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜WeeklyHabitLogRequest.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂task
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜TaskCreateRequest.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜TaskUpdateRequest.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂user
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜UserDetailsResponse.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserUpdateRequest.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂enums
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜TaskDifficulty.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜TaskStatus.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂exception
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ApiExceptionHandler.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ApiRequestException.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DailyHabitLogRepository.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜HabitRepository.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜TaskRepository.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜UserRepository.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜WeeklyHabitLogRepository.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂security
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AuthUtil.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜JwtAuthenticationException.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜JwtConfigurer.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜JwtFilter.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜JwtProvider.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜UserPrincipal$Companion.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜UserPrincipal.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserServiceImpl.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂service
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜AuthService.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜HabitTrackerApplication.class
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜HabitTrackerApplicationKt.class
+ ┃ ┃ ┃ ┃ ┣ 📂META-INF
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜habit-tracker.kotlin_module
+ ┃ ┃ ┃ ┃ ┗ 📜WeeklyHabitLogResponse.class
+ ┃ ┣ 📂kotlin
+ ┃ ┃ ┗ 📂compileKotlin
+ ┃ ┃ ┃ ┣ 📂cacheable
+ ┃ ┃ ┃ ┃ ┣ 📂caches-jvm
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂inputs
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜source-to-output.tab
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜source-to-output.tab.keystream
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜source-to-output.tab.keystream.len
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜source-to-output.tab.len
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜source-to-output.tab.values.at
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜source-to-output.tab_i
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜source-to-output.tab_i.len
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂jvm
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂kotlin
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜class-attributes.tab
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜class-attributes.tab.keystream
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜class-attributes.tab.keystream.len
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜class-attributes.tab.len
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜class-attributes.tab.values.at
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜class-attributes.tab_i
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜class-attributes.tab_i.len
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜class-fq-name-to-source.tab
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜class-fq-name-to-source.tab.keystream
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜class-fq-name-to-source.tab.keystream.len
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜class-fq-name-to-source.tab.len
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜class-fq-name-to-source.tab.values.at
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜class-fq-name-to-source.tab_i
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜class-fq-name-to-source.tab_i.len
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜constants.tab
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜constants.tab.keystream
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜constants.tab.keystream.len
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜constants.tab.len
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜constants.tab.values.at
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜constants.tab_i
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜constants.tab_i.len
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜internal-name-to-source.tab
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜internal-name-to-source.tab.keystream
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜internal-name-to-source.tab.keystream.len
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜internal-name-to-source.tab.len
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜internal-name-to-source.tab.values.at
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜internal-name-to-source.tab_i
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜internal-name-to-source.tab_i.len
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜package-parts.tab
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜package-parts.tab.keystream
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜package-parts.tab.keystream.len
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜package-parts.tab.len
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜package-parts.tab.values.at
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜package-parts.tab_i
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜package-parts.tab_i.len
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜proto.tab
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜proto.tab.keystream
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜proto.tab.keystream.len
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜proto.tab.len
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜proto.tab.values.at
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜proto.tab_i
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜proto.tab_i.len
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜source-to-classes.tab
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜source-to-classes.tab.keystream
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜source-to-classes.tab.keystream.len
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜source-to-classes.tab.len
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜source-to-classes.tab.values.at
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜source-to-classes.tab_i
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜source-to-classes.tab_i.len
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜subtypes.tab
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜subtypes.tab.keystream
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜subtypes.tab.keystream.len
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜subtypes.tab.len
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜subtypes.tab.values.at
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜subtypes.tab_i
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜subtypes.tab_i.len
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜supertypes.tab
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜supertypes.tab.keystream
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜supertypes.tab.keystream.len
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜supertypes.tab.len
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜supertypes.tab.values.at
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜supertypes.tab_i
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜supertypes.tab_i.len
+ ┃ ┃ ┃ ┃ ┃ ┗ 📂lookups
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜counters.tab
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜file-to-id.tab
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜file-to-id.tab.keystream
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜file-to-id.tab.keystream.len
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜file-to-id.tab.len
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜file-to-id.tab.values.at
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜file-to-id.tab_i
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜file-to-id.tab_i.len
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜id-to-file.tab
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜id-to-file.tab.keystream
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜id-to-file.tab.keystream.len
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜id-to-file.tab.len
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜id-to-file.tab.values.at
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜id-to-file.tab_i
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜id-to-file.tab_i.len
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜lookups.tab
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜lookups.tab.keystream
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜lookups.tab.keystream.len
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜lookups.tab.len
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜lookups.tab.values.at
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜lookups.tab_i
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜lookups.tab_i.len
+ ┃ ┃ ┃ ┃ ┗ 📜last-build.bin
+ ┃ ┃ ┃ ┣ 📂classpath-snapshot
+ ┃ ┃ ┃ ┃ ┗ 📜shrunk-classpath-snapshot.bin
+ ┃ ┃ ┃ ┗ 📂local-state
+ ┃ ┃ ┃ ┃ ┗ 📜build-history.bin
+ ┃ ┣ 📂resources
+ ┃ ┃ ┗ 📂main
+ ┃ ┃ ┃ ┣ 📂static
+ ┃ ┃ ┃ ┣ 📂templates
+ ┃ ┃ ┃ ┗ 📜application.properties
+ ┃ ┗ 📜resolvedMainClassName
+ ┣ 📂gradle
+ ┃ ┗ 📂wrapper
+ ┃ ┃ ┣ 📜gradle-wrapper.jar
+ ┃ ┃ ┗ 📜gradle-wrapper.properties
+ ┣ 📂src
+ ┃ ┣ 📂main
+ ┃ ┃ ┣ 📂kotlin
+ ┃ ┃ ┃ ┗ 📂com
+ ┃ ┃ ┃ ┃ ┗ 📂habit
+ ┃ ┃ ┃ ┃ ┃ ┗ 📂habit_tracker
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂constants
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ErrorMessage.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AuthController.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜HabitController.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜HabitLogController.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜TaskController.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserController.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂domain
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DailyHabitLog.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜Habit.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜Task.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜User.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜WeeklyHabitLog.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂auth
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AuthResponse.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AuthResult.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜LoginRequest.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜RegisterRequest.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂habit
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜HabitCreateRequest.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜HabitResponse.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜HabitUpdateRequest.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂logs
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂daily
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DailyHabitLogRequest.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜DailyHabitLogResponse.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂weekly
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜WeeklyHabitLogRequest.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜WeeklyHabitLogResponse.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜FullHabitLogsForWeek.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂task
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜TaskCreateRequest.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜TaskResponse.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜TaskUpdateRequest.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂user
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜UserResponse.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserUpdateRequest.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂enums
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜TaskDifficulty.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜TaskStatus.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂events
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DailyHabitLogUpdatedEvent.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜EventPublisher.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂exception
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ApiExceptionHandler.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ApiRequestException.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂mapper
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AuthMapper.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DailyHabitLogMapper.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜FullHabitLogsForWeekMapper.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜HabitMapper.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜TaskMapper.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜UserMapper.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜WeeklyHabitLogMapper.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DailyHabitLogRepository.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜HabitRepository.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜TaskRepository.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜UserRepository.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜WeeklyHabitLogRepository.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂security
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AuthUtil.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜JwtAuthenticationException.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜JwtConfigurer.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜JwtFilter.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜JwtProvider.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜UserPrincipal.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserServiceImpl.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂service
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AuthService.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DailyHabitLogService.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜HabitService.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜TaskService.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜UserService.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜WeeklyHabitLogService.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜HabitTrackerApplication.kt
+ ┃ ┃ ┗ 📂resources
+ ┃ ┃ ┃ ┣ 📂static
+ ┃ ┃ ┃ ┣ 📂templates
+ ┃ ┃ ┃ ┗ 📜application.properties
+ ┃ ┗ 📂test
+ ┃ ┃ ┗ 📂kotlin
+ ┃ ┃ ┃ ┗ 📂com
+ ┃ ┃ ┃ ┃ ┗ 📂habit
+ ┃ ┃ ┃ ┃ ┃ ┗ 📂habit_tracker
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜HabitTrackerApplicationTests.kt
+ ┣ 📂target
+ ┃ ┣ 📂classes
+ ┃ ┃ ┗ 📂com
+ ┃ ┃ ┃ ┗ 📂habit
+ ┃ ┃ ┃ ┃ ┗ 📂habit_tracker
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂constants
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ErrorMessage.kt
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AuthController.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜HabitController.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜HabitLogController.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜TaskController.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserController.kt
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂domain
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DailyHabitLog.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜Habit.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜Task.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜User.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜WeeklyHabitLog.kt
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂auth
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AuthResponse.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AuthResult.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜LoginRequest.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜RegisterRequest.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂habit
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜HabitCreateRequest.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜HabitResponse.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜HabitUpdateRequest.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂logs
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂daily
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DailyHabitLogRequest.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜DailyHabitLogResponse.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂weekly
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜WeeklyHabitLogRequest.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜WeeklyHabitLogResponse.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜FullHabitLogsForWeek.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂task
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜TaskCreateRequest.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜TaskResponse.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜TaskUpdateRequest.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂user
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜UserResponse.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserUpdateRequest.kt
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂enums
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂events
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DailyHabitLogUpdatedEvent.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜EventPublisher.kt
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂exception
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ApiExceptionHandler.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ApiRequestException.kt
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂mapper
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AuthMapper.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DailyHabitLogMapper.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜FullHabitLogsForWeekMapper.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜HabitMapper.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜TaskMapper.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜UserMapper.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜WeeklyHabitLogMapper.kt
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DailyHabitLogRepository.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜HabitRepository.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜TaskRepository.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜UserRepository.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜WeeklyHabitLogRepository.kt
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂security
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AuthUtil.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜JwtAuthenticationException.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜JwtConfigurer.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜JwtFilter.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜JwtProvider.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜UserPrincipal.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserServiceImpl.kt
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂service
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AuthService.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DailyHabitLogService.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜HabitService.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜TaskService.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜UserService.kt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜WeeklyHabitLogService.kt
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜HabitTrackerApplication.kt
+ ┃ ┗ 📂test-classes
+ ┃ ┃ ┗ 📂com
+ ┃ ┃ ┃ ┗ 📂habit
+ ┃ ┃ ┃ ┃ ┗ 📂habit_tracker
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜HabitTrackerApplicationTests.kt
+ ┣ 📜.gitattributes
+ ┣ 📜.gitignore
+ ┣ 📜build.gradle.kts
+ ┣ 📜gradlew
+ ┣ 📜gradlew.bat
+ ┣ 📜HELP.md
+ ┗ 📜settings.gradle.kts
