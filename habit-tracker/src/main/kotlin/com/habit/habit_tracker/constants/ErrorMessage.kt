@@ -9,4 +9,5 @@ object ErrorMessage {
     const val HABIT_NOT_FOUND = "No habits found"
     const val UNAUTHORIZED = "Access denied"
     const val DHL_NOT_FOUND = "No habit data found for this day"
+    const val WHL_NOT_FOUND = "No habit data found for this week"
 }

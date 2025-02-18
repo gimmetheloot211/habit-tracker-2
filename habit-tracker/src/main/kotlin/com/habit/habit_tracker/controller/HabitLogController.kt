@@ -4,11 +4,14 @@ import com.habit.habit_tracker.dto.logs.daily.DailyHabitLogRequest
 import com.habit.habit_tracker.dto.logs.daily.DailyHabitLogResponse
 import com.habit.habit_tracker.dto.logs.weekly.WeeklyHabitLogRequest
 import com.habit.habit_tracker.dto.logs.weekly.WeeklyHabitLogResponse
+import com.habit.habit_tracker.dto.logs.FullHabitLogsForWeek
 import com.habit.habit_tracker.mapper.DailyHabitLogMapper
 import com.habit.habit_tracker.mapper.WeeklyHabitLogMapper
+import com.habit.habit_tracker.mapper.FullHabitLogsForWeekMapper
 import com.habit.habit_tracker.exception.ApiRequestException
 import com.habit.habit_tracker.service.DailyHabitLogService
 import com.habit.habit_tracker.service.WeeklyHabitLogService
+import com.habit.habit_tracker.service.HabitService
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -20,7 +23,8 @@ import java.time.format.DateTimeParseException
 @RequestMapping("api/v1/logs")
 class HabitLogController(
     private val dailyHabitLogService: DailyHabitLogService,
-    private val weeklyHabitLogService: WeeklyHabitLogService
+    private val weeklyHabitLogService: WeeklyHabitLogService,
+    private val habitService: HabitService
 ) {
 
     @PatchMapping("/daily/{habitId}")
@@ -30,6 +34,16 @@ class HabitLogController(
         ): ResponseEntity<DailyHabitLogResponse> {
         val dailyHabitLog = dailyHabitLogService.createOrUpdateDailyHabitLog(habitId, request)
         val response = DailyHabitLogMapper.toDailyHabitLogResponse(dailyHabitLog)
+        return ResponseEntity.ok(response)
+    }
+
+    @PatchMapping("/weekly/{habitId}")
+    fun createOrUpdateWeeklyHabitLog(
+        @PathVariable habitId: Long, 
+        @Valid @RequestBody request: WeeklyHabitLogRequest
+        ): ResponseEntity<WeeklyHabitLogResponse> {
+        val weeklyHabitLog = weeklyHabitLogService.createOrUpdateWeeklyHabitLog(habitId, request)
+        val response = WeeklyHabitLogMapper.toWeeklyHabitLogResponse(weeklyHabitLog)
         return ResponseEntity.ok(response)
     }
 
@@ -48,13 +62,30 @@ class HabitLogController(
         }
     }
 
-    @PatchMapping("/weekly/{habitId}")
-    fun createOrUpdateWeeklyHabitLog(
-        @PathVariable habitId: Long, 
-        @Valid @RequestBody request: WeeklyHabitLogRequest
-        ): ResponseEntity<WeeklyHabitLogResponse> {
-        val weeklyHabitLog = weeklyHabitLogService.createOrUpdateWeeklyHabitLog(habitId, request)
-        val response = WeeklyHabitLogMapper.toWeeklyHabitLogResponse(weeklyHabitLog)
-        return ResponseEntity.ok(response)
+    @GetMapping("/week")
+    fun getFullHabitLogsForWeek(
+        @RequestParam("habitId") habitId: Long,
+        @RequestParam("weekStart") weekStartString: String,
+        @RequestParam("weekEnd") weekEndString: String
+    ): ResponseEntity<FullHabitLogsForWeek> {
+        return try {
+            val weekStart = LocalDate.parse(weekStartString)
+            val weekEnd = LocalDate.parse(weekEndString)
+
+            val dailyHabitLogs = dailyHabitLogService.getDailyHabitLogsForWeek(habitId, weekStart, weekEnd)
+            val weeklyHabitLog = weeklyHabitLogService.getWeeklyHabitLog(habitId, weekStart, weekEnd)
+            val habit = habitService.getHabit(habitId)
+
+            val fullHabitLogsForWeek = FullHabitLogsForWeekMapper.toFullHabitLogsForWeek(
+                dailyHabitLogs, 
+                weeklyHabitLog, 
+                habit
+            )
+
+            ResponseEntity.ok(fullHabitLogsForWeek)
+
+        } catch (e: DateTimeParseException) {
+            throw ApiRequestException("Invalid date format. Please use YYYY-MM-DD.", HttpStatus.BAD_REQUEST)
+        }
     }
 }

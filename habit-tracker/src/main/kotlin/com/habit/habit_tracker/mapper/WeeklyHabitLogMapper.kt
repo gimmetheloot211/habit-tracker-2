@@ -4,17 +4,19 @@ import com.habit.habit_tracker.domain.WeeklyHabitLog
 import com.habit.habit_tracker.dto.logs.weekly.WeeklyHabitLogResponse
 
 object WeeklyHabitLogMapper {
-    fun toWeeklyHabitLogResponse(log: WeeklyHabitLog): WeeklyHabitLogResponse {
-        return WeeklyHabitLogResponse(
-            id = log.id!!,
-            habitId = log.habit.id!!,
-            weeklyGoal = log.weeklyGoal,
-            dailyGoal = log.dailyGoal,
-            minutesDone = log.minutesDone,
-            weeklyImbalance = log.weeklyImbalance,
-            notes = log.notes,
-            weekStart = log.weekStart,
-            weekEnd = log.weekEnd
-        )
+    fun toWeeklyHabitLogResponse(log: WeeklyHabitLog?): WeeklyHabitLogResponse? {
+        return log?.let {
+            WeeklyHabitLogResponse(
+                id = it.id!!,
+                habitId = it.habit.id!!,
+                weeklyGoal = it.weeklyGoal,
+                dailyGoal = it.dailyGoal,
+                minutesDone = it.minutesDone,
+                weeklyImbalance = it.weeklyImbalance,
+                notes = it.notes,
+                weekStart = it.weekStart,
+                weekEnd = it.weekEnd
+            )
+        }
     }
 }

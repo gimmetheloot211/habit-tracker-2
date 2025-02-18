@@ -6,7 +6,7 @@ import java.time.DayOfWeek
 
 import com.habit.habit_tracker.constants.ErrorMessage.USER_NOT_FOUND
 import com.habit.habit_tracker.constants.ErrorMessage.HABIT_NOT_FOUND
-import com.habit.habit_tracker.constants.ErrorMessage.DHL_NOT_FOUND
+import com.habit.habit_tracker.constants.ErrorMessage.WHL_NOT_FOUND
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -87,5 +87,13 @@ class WeeklyHabitLogService(
         }
 
         return weeklyHabitLogRepository.save(weeklyLog)
+    }
+
+    fun getWeeklyHabitLog(habitId: Long, weekStart: LocalDate, weekEnd: LocalDate): WeeklyHabitLog? {
+        val user = authUtil.getAuthenticatedUser()
+        habitRepository.findByIdAndUserId(habitId, user.id!!)
+            .orElseThrow { ApiRequestException(HABIT_NOT_FOUND, HttpStatus.NOT_FOUND) }
+        
+        return weeklyHabitLogRepository.findByHabitAndDate(habitId, weekStart, weekEnd).orElse(null)
     }
 }

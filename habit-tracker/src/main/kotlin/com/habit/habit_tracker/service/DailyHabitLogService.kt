@@ -46,6 +46,9 @@ class DailyHabitLogService(
                 val minutesDoneChange = newMinutes - minutesDone // calculating the change for the event
                 minutesDone = newMinutes // updating the dhl minutesDone
                 eventPublisher.publishDailyHabitLogUpdated(habit.user.id!!, minutesDoneChange, date)
+
+                habit.minutesTotal += minutesDoneChange
+                habitRepository.save(habit)
             }
         } ?: DailyHabitLog(
             habit = habit,
@@ -97,17 +100,10 @@ class DailyHabitLogService(
             .orElseThrow { ApiRequestException(DHL_NOT_FOUND, HttpStatus.NOT_FOUND)}
     }
 
-    fun getDailyHabitLogsForWeek(habitId: Long, year: Int, weekNumber: Int): List<DailyHabitLog> {
+    fun getDailyHabitLogsForWeek(habitId: Long, weekStart: LocalDate, weekEnd: LocalDate): List<DailyHabitLog> {
         val user = authUtil.getAuthenticatedUser()
         habitRepository.findByIdAndUserId(habitId, user.id!!)
             .orElseThrow { ApiRequestException(HABIT_NOT_FOUND, HttpStatus.NOT_FOUND)}
-
-        val weekFields: WeekFields = WeekFields.of(Locale.getDefault())
-        val weekStart: LocalDate = LocalDate.of(year, 1, 1)
-            .with(weekFields.weekOfYear(), weekNumber.toLong())
-            .with(DayOfWeek.MONDAY)
-
-        val weekEnd: LocalDate = weekStart.plusDays(6)
 
         return dailyHabitLogRepository.findDailyHabitLogsForWeek(habitId, weekStart, weekEnd)
     }

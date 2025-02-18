@@ -1,5 +1,10 @@
 package com.habit.habit_tracker.service
 
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
+
+import org.springframework.context.event.EventListener
+
 import com.habit.habit_tracker.constants.ErrorMessage.USER_NOT_FOUND
 import com.habit.habit_tracker.constants.ErrorMessage.HABIT_NOT_FOUND
 import org.springframework.http.HttpStatus
@@ -10,9 +15,12 @@ import com.habit.habit_tracker.domain.User
 import com.habit.habit_tracker.dto.habit.HabitCreateRequest
 import com.habit.habit_tracker.dto.habit.HabitUpdateRequest
 import com.habit.habit_tracker.exception.ApiRequestException
+import com.habit.habit_tracker.events.DailyHabitLogUpdatedEvent
 import com.habit.habit_tracker.repository.HabitRepository
 import com.habit.habit_tracker.repository.UserRepository
 import com.habit.habit_tracker.security.AuthUtil
+
+import jakarta.transaction.Transactional
 
 @Service
 class HabitService(
@@ -20,6 +28,17 @@ class HabitService(
     private val userRepository: UserRepository,
     private val authUtil: AuthUtil
 ) {
+    @EventListener
+    @Transactional
+    fun handleDailyHabitLogUpdated(event: DailyHabitLogUpdatedEvent) {
+        val habit = habitRepository.findById(event.habitId)
+            .orElseThrow { ApiRequestException(HABIT_NOT_FOUND, HttpStatus.NOT_FOUND) }
+
+        habit.minutesTotal += event.minutesDoneChange
+
+        habitRepository.save(habit)
+    }
+
     fun createHabit(request: HabitCreateRequest): Habit {
         val user = authUtil.getAuthenticatedUser()
             .let { userRepository.findById(it.id!!).orElseThrow {
