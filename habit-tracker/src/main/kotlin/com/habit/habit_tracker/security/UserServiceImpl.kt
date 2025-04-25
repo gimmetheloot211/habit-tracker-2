@@ -1,6 +1,5 @@
 package com.habit.habit_tracker.security
 
-import com.habit.habit_tracker.domain.User
 import com.habit.habit_tracker.repository.UserRepository
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService

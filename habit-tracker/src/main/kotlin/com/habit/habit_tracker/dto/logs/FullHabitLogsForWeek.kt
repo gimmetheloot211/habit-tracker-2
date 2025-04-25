@@ -7,7 +7,7 @@ import com.habit.habit_tracker.dto.logs.weekly.WeeklyHabitLogResponse
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class FullHabitLogsForWeek(
-    val dailyHabitLogs: List<DailyHabitLogResponse>
+    val dailyHabitLogs: List<DailyHabitLogResponse>,
     val weeklyHabitLog: WeeklyHabitLogResponse?,
     val habit: HabitResponse,
 )

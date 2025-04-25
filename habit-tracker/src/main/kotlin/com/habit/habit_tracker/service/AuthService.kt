@@ -10,7 +10,8 @@ import com.habit.habit_tracker.dto.auth.LoginRequest
 import com.habit.habit_tracker.dto.auth.RegisterRequest
 import com.habit.habit_tracker.exception.ApiRequestException
 import com.habit.habit_tracker.repository.UserRepository
-import com.habit.habit_tracker.security.JwtProvider
+import com.habit.habit_tracker.security.JwtService
+import com.habit.habit_tracker.security.UserPrincipal
 import org.springframework.http.HttpStatus
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
@@ -19,7 +20,7 @@ import org.springframework.stereotype.Service
 class AuthService(
     private val userRepository: UserRepository,
     private val passwordEncoder: PasswordEncoder,
-    private val jwtProvider: JwtProvider
+    private val jwtService: JwtService
 ) {
     fun registerUser(request: RegisterRequest): AuthResult {
         if (userRepository.findByUsername(request.username).isPresent) {
@@ -32,8 +33,9 @@ class AuthService(
         )
 
         userRepository.save(newUser)
-        
-        val token = jwtProvider.createToken(newUser.id!!)
+
+        val userPrincipal = UserPrincipal(newUser)
+        val token = jwtService.generateToken(userPrincipal)
 
         return AuthResult(token, newUser.username)
     }
@@ -46,7 +48,9 @@ class AuthService(
             throw ApiRequestException(INVALID_CREDENTIALS, HttpStatus.UNAUTHORIZED)
         }
 
-        val token = jwtProvider.createToken(user.id!!)
+        val userPrincipal = UserPrincipal(user)
+        val token = jwtService.generateToken(userPrincipal)
+
 
         return AuthResult(token, user.username)
     }
