@@ -1,8 +1,5 @@
 package com.habit.habit_tracker.service
 
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
-
 import org.springframework.context.event.EventListener
 
 import com.habit.habit_tracker.constants.ErrorMessage.USER_NOT_FOUND
@@ -11,9 +8,8 @@ import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
 
 import com.habit.habit_tracker.domain.Habit
-import com.habit.habit_tracker.domain.User
-import com.habit.habit_tracker.dto.habit.HabitCreateRequest
-import com.habit.habit_tracker.dto.habit.HabitUpdateRequest
+import com.habit.habit_tracker.dto.habit.request.HabitCreateRequest
+import com.habit.habit_tracker.dto.habit.request.HabitUpdateRequest
 import com.habit.habit_tracker.exception.ApiRequestException
 import com.habit.habit_tracker.events.DailyHabitLogUpdatedEvent
 import com.habit.habit_tracker.repository.HabitRepository

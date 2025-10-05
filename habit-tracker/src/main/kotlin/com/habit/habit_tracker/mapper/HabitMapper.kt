@@ -1,8 +1,7 @@
 package com.habit.habit_tracker.mapper
 
 import com.habit.habit_tracker.domain.Habit
-import com.habit.habit_tracker.dto.habit.HabitResponse
-import org.springframework.http.ResponseEntity
+import com.habit.habit_tracker.dto.habit.response.HabitResponse
 
 object HabitMapper {
     fun toHabitResponse(habit: Habit): HabitResponse {

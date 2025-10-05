@@ -3,10 +3,9 @@ package com.habit.habit_tracker.controller;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*
 
-import com.habit.habit_tracker.domain.Habit;
-import com.habit.habit_tracker.dto.habit.HabitCreateRequest;
-import com.habit.habit_tracker.dto.habit.HabitResponse;
-import com.habit.habit_tracker.dto.habit.HabitUpdateRequest;
+import com.habit.habit_tracker.dto.habit.request.HabitCreateRequest;
+import com.habit.habit_tracker.dto.habit.response.HabitResponse;
+import com.habit.habit_tracker.dto.habit.request.HabitUpdateRequest;
 import com.habit.habit_tracker.service.HabitService;
 import com.habit.habit_tracker.mapper.HabitMapper
 
