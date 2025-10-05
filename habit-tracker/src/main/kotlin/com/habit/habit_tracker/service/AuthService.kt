@@ -5,9 +5,9 @@ import com.habit.habit_tracker.constants.ErrorMessage.USER_NOT_FOUND
 import com.habit.habit_tracker.constants.ErrorMessage.INVALID_CREDENTIALS
 
 import com.habit.habit_tracker.domain.User
-import com.habit.habit_tracker.dto.auth.AuthResult
-import com.habit.habit_tracker.dto.auth.LoginRequest
-import com.habit.habit_tracker.dto.auth.RegisterRequest
+import com.habit.habit_tracker.dto.auth.request.LoginRequest
+import com.habit.habit_tracker.dto.auth.request.RegisterRequest
+import com.habit.habit_tracker.dto.auth.response.AuthResponse
 import com.habit.habit_tracker.exception.ApiRequestException
 import com.habit.habit_tracker.repository.UserRepository
 import com.habit.habit_tracker.security.JwtService
@@ -22,7 +22,7 @@ class AuthService(
     private val passwordEncoder: PasswordEncoder,
     private val jwtService: JwtService
 ) {
-    fun registerUser(request: RegisterRequest): AuthResult {
+    fun registerUser(request: RegisterRequest): AuthResponse {
         if (userRepository.findByUsername(request.username).isPresent) {
             throw ApiRequestException(USER_IN_USE, HttpStatus.CONFLICT)
         }
@@ -37,10 +37,10 @@ class AuthService(
         val userPrincipal = UserPrincipal(newUser)
         val token = jwtService.generateToken(userPrincipal)
 
-        return AuthResult(token, newUser.username)
+        return AuthResponse(token, newUser.username, "Logged in successfully")
     }
 
-    fun loginUser(request: LoginRequest): AuthResult {
+    fun loginUser(request: LoginRequest): AuthResponse {
         val user = userRepository.findByUsername(request.username)
             .orElseThrow { ApiRequestException(USER_NOT_FOUND, HttpStatus.NOT_FOUND) }
 
@@ -52,6 +52,6 @@ class AuthService(
         val token = jwtService.generateToken(userPrincipal)
 
 
-        return AuthResult(token, user.username)
+        return AuthResponse(token, user.username, "Logged in successfully")
     }
 }

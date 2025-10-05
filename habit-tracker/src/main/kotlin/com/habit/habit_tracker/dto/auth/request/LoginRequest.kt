@@ -1,4 +1,4 @@
-package com.habit.habit_tracker.dto.auth
+package com.habit.habit_tracker.dto.auth.request
 
 import jakarta.validation.constraints.Size
 import jakarta.validation.constraints.NotBlank
