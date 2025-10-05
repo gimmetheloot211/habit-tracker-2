@@ -1,7 +1,7 @@
 package com.habit.habit_tracker.mapper
 
 import com.habit.habit_tracker.domain.Task
-import com.habit.habit_tracker.dto.task.TaskResponse
+import com.habit.habit_tracker.dto.task.response.TaskResponse
 
 object TaskMapper {
     fun toTaskResponse(task: Task): TaskResponse {

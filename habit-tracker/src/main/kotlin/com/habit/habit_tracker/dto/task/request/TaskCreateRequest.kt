@@ -1,12 +1,12 @@
-package com.habit.habit_tracker.dto.task
+package com.habit.habit_tracker.dto.task.request
 
 import java.time.LocalDateTime
 import com.habit.habit_tracker.enums.TaskDifficulty
 
-import jakarta.validation.constraints.Future;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.Future
+import jakarta.validation.constraints.NotBlank
+import jakarta.validation.constraints.NotNull
+import jakarta.validation.constraints.Size
 
 data class TaskCreateRequest(
     @field:NotBlank(message = "Task name cannot be empty")

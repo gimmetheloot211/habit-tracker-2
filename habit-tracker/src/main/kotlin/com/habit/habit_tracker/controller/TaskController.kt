@@ -1,18 +1,15 @@
-package com.habit.habit_tracker.controller;
+package com.habit.habit_tracker.controller
 
-import java.net.URI;
-
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
-import com.habit.habit_tracker.domain.Task;
-import com.habit.habit_tracker.dto.task.TaskCreateRequest;
-import com.habit.habit_tracker.dto.task.TaskResponse;
-import com.habit.habit_tracker.dto.task.TaskUpdateRequest;
-import com.habit.habit_tracker.service.TaskService;
+import com.habit.habit_tracker.dto.task.request.TaskCreateRequest
+import com.habit.habit_tracker.dto.task.response.TaskResponse
+import com.habit.habit_tracker.dto.task.request.TaskUpdateRequest
+import com.habit.habit_tracker.service.TaskService
 import com.habit.habit_tracker.mapper.TaskMapper
 
-import jakarta.validation.Valid;
+import jakarta.validation.Valid
 
 @RestController
 @RequestMapping("/api/v1/tasks")

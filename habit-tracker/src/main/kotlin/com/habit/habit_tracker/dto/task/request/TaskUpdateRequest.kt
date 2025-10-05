@@ -1,9 +1,9 @@
-package com.habit.habit_tracker.dto.task
+package com.habit.habit_tracker.dto.task.request
 
-import com.habit.habit_tracker.enums.TaskDifficulty;
-import com.habit.habit_tracker.enums.TaskStatus;
+import com.habit.habit_tracker.enums.TaskDifficulty
+import com.habit.habit_tracker.enums.TaskStatus
 
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.Size
 
 data class TaskUpdateRequest(
     @field:Size(max = 50, message = "Task name cannot exceed 50 characters")
