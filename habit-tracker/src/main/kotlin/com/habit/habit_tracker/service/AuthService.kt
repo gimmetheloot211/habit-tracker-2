@@ -37,7 +37,7 @@ class AuthService(
         val userPrincipal = UserPrincipal(newUser)
         val token = jwtService.generateToken(userPrincipal)
 
-        return AuthResponse(token, newUser.username, "Logged in successfully")
+        return AuthResponse(token, newUser.username, "Registered successfully")
     }
 
     fun loginUser(request: LoginRequest): AuthResponse {
