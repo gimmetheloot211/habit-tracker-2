@@ -1,11 +1,10 @@
-package com.habit.habit_tracker.dto.logs.daily
+package com.habit.habit_tracker.dto.logs.request.daily
 
-import java.time.LocalDate;
-
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.Max
+import jakarta.validation.constraints.Min
+import jakarta.validation.constraints.NotNull
+import jakarta.validation.constraints.Size
+import java.time.LocalDate
 
 data class DailyHabitLogRequest(
     @field:Min(value = 0, message = "Minutes done cannot be negative")

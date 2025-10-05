@@ -1,12 +1,7 @@
 package com.habit.habit_tracker.service
 
-import java.time.DayOfWeek
 import java.time.LocalDate
-import java.time.temporal.WeekFields
-import java.util.Locale
-import java.util.Optional
 
-import com.habit.habit_tracker.constants.ErrorMessage.USER_NOT_FOUND
 import com.habit.habit_tracker.constants.ErrorMessage.HABIT_NOT_FOUND
 import com.habit.habit_tracker.constants.ErrorMessage.DHL_NOT_FOUND
 
@@ -14,9 +9,7 @@ import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
 
 import com.habit.habit_tracker.domain.DailyHabitLog
-import com.habit.habit_tracker.domain.Habit
-import com.habit.habit_tracker.domain.User
-import com.habit.habit_tracker.dto.logs.daily.DailyHabitLogRequest
+import com.habit.habit_tracker.dto.logs.request.daily.DailyHabitLogRequest
 import com.habit.habit_tracker.events.EventPublisher
 import com.habit.habit_tracker.exception.ApiRequestException
 import com.habit.habit_tracker.repository.DailyHabitLogRepository

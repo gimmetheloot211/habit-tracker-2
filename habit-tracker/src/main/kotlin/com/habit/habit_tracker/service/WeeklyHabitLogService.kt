@@ -2,11 +2,8 @@ package com.habit.habit_tracker.service
 
 import java.time.LocalDate
 import java.time.temporal.TemporalAdjusters
-import java.time.DayOfWeek
 
-import com.habit.habit_tracker.constants.ErrorMessage.USER_NOT_FOUND
 import com.habit.habit_tracker.constants.ErrorMessage.HABIT_NOT_FOUND
-import com.habit.habit_tracker.constants.ErrorMessage.WHL_NOT_FOUND
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -15,17 +12,13 @@ import org.springframework.context.event.EventListener
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
 
-import com.habit.habit_tracker.domain.Habit
-import com.habit.habit_tracker.domain.User
 import com.habit.habit_tracker.domain.WeeklyHabitLog
-import com.habit.habit_tracker.dto.logs.weekly.WeeklyHabitLogRequest
+import com.habit.habit_tracker.dto.logs.request.weekly.WeeklyHabitLogRequest
 import com.habit.habit_tracker.events.DailyHabitLogUpdatedEvent
 import com.habit.habit_tracker.exception.ApiRequestException
 import com.habit.habit_tracker.repository.HabitRepository
 import com.habit.habit_tracker.repository.WeeklyHabitLogRepository
 import com.habit.habit_tracker.security.AuthUtil
-import kotlin.jvm.internal.iterator
-import kotlin.math.floor
 
 @Service
 class WeeklyHabitLogService(

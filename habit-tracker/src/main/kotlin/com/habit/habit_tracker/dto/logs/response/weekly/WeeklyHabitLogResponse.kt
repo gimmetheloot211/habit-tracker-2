@@ -1,7 +1,7 @@
-package com.habit.habit_tracker.dto.logs.weekly
+package com.habit.habit_tracker.dto.logs.response.weekly
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import java.time.LocalDate;
+import com.fasterxml.jackson.annotation.JsonInclude
+import java.time.LocalDate
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class WeeklyHabitLogResponse(

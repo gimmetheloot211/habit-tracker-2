@@ -1,4 +1,4 @@
-package com.habit.habit_tracker.dto.logs.daily
+package com.habit.habit_tracker.dto.logs.response.daily
 
 import com.fasterxml.jackson.annotation.JsonInclude
 import java.time.LocalDate
