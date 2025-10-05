@@ -1,11 +1,11 @@
 package com.habit.habit_tracker.mapper
 
 import com.habit.habit_tracker.domain.User
-import com.habit.habit_tracker.dto.user.UserDetailsResponse
+import com.habit.habit_tracker.dto.user.UserResponse
 
 object UserMapper {
-    fun toUserDetailsResponse(user: User): UserDetailsResponse {
-        return UserDetailsResponse(
+    fun toUserDetailsResponse(user: User): UserResponse {
+        return UserResponse(
             id = user.id!!,
             username = user.username,
             firstName = user.firstName,

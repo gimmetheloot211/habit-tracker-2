@@ -5,7 +5,7 @@ import java.time.LocalDateTime
 import com.fasterxml.jackson.annotation.JsonInclude
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-data class UserDetailsResponse(
+data class UserResponse(
     val id: Long,
     val username: String,
     val firstName: String?,
