@@ -1,8 +1,7 @@
-package com.habit.habit_tracker.dto.user
-
-import java.time.LocalDateTime
+package com.habit.habit_tracker.dto.user.response
 
 import com.fasterxml.jackson.annotation.JsonInclude
+import java.time.LocalDateTime
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class UserResponse(
