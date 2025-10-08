@@ -27,7 +27,7 @@ class HabitLogController(
     private val habitService: HabitService
 ) {
 
-    @PatchMapping("/daily/{habitId}")
+    @PutMapping("/daily/{habitId}")
     fun createOrUpdateDailyHabitLog(
         @PathVariable habitId: Long, 
         @Valid @RequestBody request: DailyHabitLogRequest
@@ -37,7 +37,7 @@ class HabitLogController(
         return ResponseEntity.ok(response)
     }
 
-    @PatchMapping("/weekly/{habitId}")
+    @PutMapping("/weekly/{habitId}")
     fun createOrUpdateWeeklyHabitLog(
         @PathVariable habitId: Long, 
         @Valid @RequestBody request: WeeklyHabitLogRequest
