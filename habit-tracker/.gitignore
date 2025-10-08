@@ -40,3 +40,6 @@ out/
 
 ### Kotlin ###
 .kotlin
+
+### Custom ###
+src/main/resources/application.properties
