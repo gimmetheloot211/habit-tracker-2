@@ -1,13 +1,13 @@
 package com.habit.habit_tracker.mapper
 
 import com.habit.habit_tracker.dto.auth.response.AuthResponse
+import com.habit.habit_tracker.service.result.AuthResult
 
 object AuthMapper {
-    fun toAuthResponse(authResponse: AuthResponse): AuthResponse {
+    fun toAuthResponse(authResult: AuthResult): AuthResponse {
         return AuthResponse(
-            token = authResponse.token,
-            username = authResponse.username,
-            message = authResponse.message
+            authResult.token,
+            authResult.user.username
         )
     }
 }
