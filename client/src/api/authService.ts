@@ -10,7 +10,7 @@ export async function loginUser(data: LoginRequest): Promise<AuthResponse> {
       localStorage.setItem("token", auth.token);
     }
     return auth;
-  }
+}
   
   export async function registerUser(data: RegisterRequest): Promise<AuthResponse> {
     const res = await authApi.post<AuthResponse>("/v1/auth/register", data);
@@ -19,4 +19,4 @@ export async function loginUser(data: LoginRequest): Promise<AuthResponse> {
       localStorage.setItem("token", auth.token);
     }
     return auth;
-  }
+}
