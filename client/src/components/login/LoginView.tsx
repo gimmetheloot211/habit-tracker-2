@@ -48,7 +48,7 @@ export default function LoginView({
         <button
           type="submit"
           disabled={loading}
-          className="w-full rounded-lg bg-white py-2 text-black hover:bg-gray-200 disabled:opacity-50"
+          className="w-full rounded-lg bg-white py-2 text-black hover:cursor-pointer hover:bg-gray-200 disabled:opacity-50"
         >
           {loading ? "Logging in..." : "Login"}
         </button>

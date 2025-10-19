@@ -1,11 +1,9 @@
-"use client"
-
 import { useState } from "react"
-import { loginUser } from "@/api/authService"
-import { useAuth } from "@/context/AuthContext"
-import LoginView from "../../components/login/LoginView"
+import { registerUser } from "../api/authService"
+import { useAuth } from "../context/AuthContext"
+import RegisterView from "../components/register/RegisterView"
 
-export default function LoginPage() {
+export default function RegisterPage() {
     const { login } = useAuth();
   
     const [username, setUsername] = useState("");
@@ -19,17 +17,22 @@ export default function LoginPage() {
       setLoading(true);
   
       try {
-        const res = await loginUser({ username, password });
+        const res = await registerUser({ username, password });
         login(res.token);
       } catch (err: any) {
-        setError(err.response?.data?.message || "Login failed");
+        if (err.response?.status === 400 && err.response?.data) {
+            const messages = Object.values(err.response.data).join(", ");
+            setError(messages);
+          } else {
+            setError(err.response?.data?.message || "Registration failed");
+          }
       } finally {
         setLoading(false);
       }
     };
   
     return (
-      <LoginView
+      <RegisterView
       username={username}
       password={password}
       error={error}
