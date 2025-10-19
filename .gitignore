@@ -1,0 +1,43 @@
+# ===== Java / Kotlin / Spring Boot =====
+habit-tracker/target/
+habit-tracker/build/
+habit-tracker/out/
+habit-tracker/.gradle/
+habit-tracker/.idea/
+habit-tracker/*.iml
+habit-tracker/src/main/resources/application.properties
+habit-tracker/.kotlin
+
+# Logs
+habit-tracker/*.log
+
+# OS / IDE junk
+.DS_Store
+Thumbs.db
+
+# ===== Node / React =====
+client/node_modules/
+client/.next/
+client/.turbo/
+client/dist/
+client/build/
+client/.env.local
+client/.env.development.local
+client/.env.test.local
+client/.env.production.local
+
+# ===== Common =====
+.env
+.env.*
+*.log
+*.tmp
+*.bak
+
+# ===== VSCode / JetBrains =====
+.vscode/
+.idea/
+
+# ===== System Files =====
+*.swp
+*.swo
+*.swn
