@@ -1,4 +1,5 @@
 "use client";
+import "./LoginView.css";
 
 interface LoginViewProps {
   username: string;
@@ -20,19 +21,16 @@ export default function LoginView({
   handleSubmit,
 }: LoginViewProps) {
   return (
-    <div className="flex min-h-screen items-center justify-center">
-      <form
-        onSubmit={handleSubmit}
-        className="w-full max-w-sm rounded-2xl p-6 shadow-md"
-      >
-        <h1 className="mb-4 text-2xl font-semibold text-center">Login</h1>
+    <div className="login-container">
+      <form onSubmit={handleSubmit} className="login-form">
+        <h1 className="login-title">Login</h1>
 
         <input
           type="text"
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          className="mb-3 w-full rounded-lg border border-gray-300 p-2"
+          className="login-input"
         />
 
         <input
@@ -40,16 +38,12 @@ export default function LoginView({
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="mb-3 w-full rounded-lg border border-gray-300 p-2"
+          className="login-input"
         />
 
-        {error && <p className="mb-3 text-sm text-red-600">{error}</p>}
+        {error && <p className="login-error">{error}</p>}
 
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full rounded-lg bg-white py-2 text-black hover:cursor-pointer hover:bg-gray-200 disabled:opacity-50"
-        >
+        <button type="submit" disabled={loading} className="login-button">
           {loading ? "Logging in..." : "Login"}
         </button>
       </form>
